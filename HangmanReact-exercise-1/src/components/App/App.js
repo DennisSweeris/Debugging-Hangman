@@ -1,4 +1,5 @@
 // This is basically a layout component
+// Mispelled wordGuesed => wordGuessed on line 30
 
 import React from "react";
 import "./App.css";
@@ -26,10 +27,7 @@ const App = props => {
   const wordWasGuessed = wordGuessed(game.chosenWord, game.guessedLetters);
   const wrongLetters = getWrongLetters(game.chosenWord, game.guessedLetters);
   const gameIsOver = isGameOver(game, wrongLetters, wordWasGuessed);
-
-  const gameOver = gameIsOver ? (
-    <GameOver chosenWord={game.chosenWord} wordGuesed={wordWasGuessed} />
-  ) : null;
+  const gameOver = gameIsOver ? <GameOver chosenWord={game.chosenWord} wordGuessed={wordWasGuessed} /> : null;
 
   return (
     <div className="App">

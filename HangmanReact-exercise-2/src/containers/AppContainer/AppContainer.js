@@ -1,15 +1,6 @@
 import React from "react";
 import App from "../../components/App/App";
-
-const wordList = [
-  "vis",
-  "toeter",
-  "developer",
-  "telefoon",
-  "moeder",
-  "snoer",
-  "geeuw"
-];
+const wordList = ["vis", "toeter", "developer", "telefoon", "moeder", "snoer", "geeuw"];
 
 const maxGuesses = 5;
 
@@ -18,7 +9,7 @@ class AppContainer extends React.Component {
     chosenWord: "",
     guessedLetters: [],
     currentChosenLetter: "",
-    maxGuesses: maxGuesses
+    maxGuesses: maxGuesses,
   };
 
   chooseWord(list) {
@@ -31,7 +22,7 @@ class AppContainer extends React.Component {
     this.setState({
       chosenWord: this.chooseWord(wordList),
       guessedLetters: [],
-      currentChosenLetter: ""
+      currentChosenLetter: "",
     });
   };
 
@@ -43,14 +34,13 @@ class AppContainer extends React.Component {
 
   guessLetterHandler = event => {
     const inputGiven = this.state.currentChosenLetter.length > 0;
-    const newLetter = !this.state.guessedLetters.includes(
-      this.state.currentChosenLetter
-    );
+    const newLetter = !this.state.guessedLetters.includes(this.state.currentChosenLetter);
     if (inputGiven && newLetter) {
-      const newGuessedLetters = [...this.state.guesedLetters];
+      // Mispelled guesedLetters => guessedLetters
+      const newGuessedLetters = [...this.state.guessedLetters];
       newGuessedLetters.push(this.state.currentChosenLetter);
       this.setState({
-        guessedLetters: newGuessedLetters
+        guessedLetters: newGuessedLetters,
       });
     }
     this.setState({ currentChosenLetter: "" });

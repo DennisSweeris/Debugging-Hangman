@@ -9,11 +9,7 @@ const TextInput = props => (
       disabled={props.gameIsOver ? "disabled" : ""}
       onChange={props.change}
     />
-    <input
-      type="submit"
-      value="guess"
-      disabled={props.gameIsOver ? "disabled" : ""}
-    />
+    <input type="submit" value="guess" disabled={props.gameIsOver ? "disabled" : ""} />
   </form>
 );
 

@@ -26,10 +26,7 @@ const App = props => {
   const wordWasGuessed = wordGuessed(game.chosenWord, game.guessedLetters);
   const wrongLetters = getWrongLetters(game.chosenWord, game.guessedLetters);
   const gameIsOver = isGameOver(game, wrongLetters, wordWasGuessed);
-
-  const gameOver = gameIsOver ? (
-    <GameOver chosenWord={game.chosenWord} wordGuessed={wordWasGuessed} />
-  ) : null;
+  const gameOver = gameIsOver ? <GameOver chosenWord={game.chosenWord} wordGuessed={wordWasGuessed} /> : null;
 
   return (
     <div className="App">
@@ -39,8 +36,8 @@ const App = props => {
       <TextInput
         currentChosenLetter={game.currentChosenLetter}
         gameIsOver={gameIsOver}
-        change={props.chosenLetterHandler}
-        submit={props.guessLetterHandler}
+        chosenLetterHandler={props.chosenLetterHandler}
+        guessLetterHandler={props.guessLetterHandler}
       />
       <ChosenWord word={game.chosenWord} guessedLetters={game.guessedLetters} />
       <ResetGameButton click={props.restartGameHandler} />

@@ -1,4 +1,5 @@
 // This is basically a layout component
+// Line 20 missed the !
 
 import React from "react";
 import "./App.css";
@@ -13,9 +14,10 @@ const wordGuessed = (word, guessedLetters) => {
   word = word.split("");
   // remove all letters from word that are already guessed
   // We can do this with a for loop to.
-  let remaining = word.filter(letter =>
-    // If the letter is guessed return false (we want to remove that then)
-    guessedLetters.includes(letter)
+  let remaining = word.filter(
+    letter =>
+      // Missed the !
+      !guessedLetters.includes(letter)
   );
   // If we have letters left the word is not yet guessed
   return remaining.length === 0;
@@ -25,10 +27,7 @@ const isGameOver = game => {
   if (wordGuessed(game.chosenWord, game.guessedLetters)) {
     return true;
   }
-  if (
-    getWrongLetters(game.chosenWord, game.guessedLetters).length >=
-    game.maxGuesses
-  ) {
+  if (getWrongLetters(game.chosenWord, game.guessedLetters).length >= game.maxGuesses) {
     return true;
   }
   return false;
@@ -43,9 +42,7 @@ const App = props => {
   const wordWasGuessed = wordGuessed(game.chosenWord, game.guessedLetters);
   const wrongLetters = getWrongLetters(game.chosenWord, game.guessedLetters);
 
-  const gameOver = gameIsOver ? (
-    <GameOver chosenWord={game.chosenWord} wordGuessed={wordWasGuessed} />
-  ) : null;
+  const gameOver = gameIsOver ? <GameOver chosenWord={game.chosenWord} wordGuessed={wordWasGuessed} /> : null;
 
   return (
     <div className="App">
